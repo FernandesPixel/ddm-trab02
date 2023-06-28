@@ -1,5 +1,7 @@
 import * as SQLite from 'expo-sqlite'
 
+//serviço de config do SQLite
+
 const databaseName = 'mydatabase.db';
 
 export const db = SQLite.openDatabase('mydatabase.db');
@@ -10,6 +12,7 @@ db.closeDatabase = () =>  {
     }  
 };
 
+//cria tabela
 export const setupDatabase = () => {
     return new Promise((resolve, reject) => {
       db.transaction(tx => {
@@ -29,6 +32,7 @@ export const setupDatabase = () => {
     });
   };
   
+  //executa sql
   db.executeSql = (sqlStatement, params) => {
     return new Promise((resolve, reject) => {
       db.transaction(tx => {

@@ -1,5 +1,6 @@
 import { db } from './SQLiteDatabase';
 
+//serviço de cadastro
 export const registerUser = async (name, email, password) => {
     try {
       console.log("db:"+db);

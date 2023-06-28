@@ -1,5 +1,6 @@
 import { db } from './SQLiteDatabase';
 
+//serviço de login
 export const loginUser = async (email, password) => {
     try {
       const result = await db.executeSql(

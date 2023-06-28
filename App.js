@@ -7,6 +7,7 @@ import MainStack from './src/navigator/Main';
 
 const App = () => {
 
+  //configura banco ao carregar
   useEffect(() => {
     setupDatabase()
       .then(db => {
@@ -17,7 +18,6 @@ const App = () => {
       });
   }, []);
   
-
   return (
     <SafeAreaProvider>
       <NavigationContainer>

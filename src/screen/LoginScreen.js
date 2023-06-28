@@ -9,6 +9,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  //verifica se o usuário existe e redireciona
   const handleLogin = () => {
     const login = loginUser(email, password);
     if(login){

@@ -3,13 +3,14 @@ import { View, Button, TextInput} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { registerUser } from '../service/Register';
 
-
+//tela de cadastro de usuário
 const RegisterScreen = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  //cadastra um usuário no banco de dados e redireciona
   const handleRegister = () => {
     const register = registerUser(username, email, password);
     if(register){
@@ -20,6 +21,7 @@ const RegisterScreen = () => {
     
   }
 
+  //redireciona para o login
   const handleLogin = () => {
     const register = registerUser(username, email, password);
       navigation.navigate("Login");
