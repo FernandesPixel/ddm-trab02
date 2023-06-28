@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { setupDatabase } from './src/service/SQLiteDatabase';
 
-export default function App() {
+import MainStack from './src/navigator/Main';
+
+const App = () => {
+
+  useEffect(() => {
+    setupDatabase()
+      .then(db => {
+        console.log('Banco de dados configurado');
+      })
+      .catch(error => {
+        console.error('Erro ao configurar o banco de dados', error);
+      });
+  }, []);
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
